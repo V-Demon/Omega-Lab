@@ -97,8 +97,8 @@ if uploaded:
             st.subheader("🔐 Analyse des Hashes")
             hd = results.get("hash_distribution", {})
             if hd:
-                fig = go.Figure(labels=list(hd.keys()), values=list(hd.values()), hole=0.4)
-                fig.update_layout(paper_bgcolor='#05080c', font_color='#b8c8d8', height=350)
+                fig = go.Figure(data=[go.Pie(labels=list(hd.keys()), values=list(hd.values()), hole=0.4)])
+                fig.update_layout(paper_bgcolor='#05080c',font_color='#b8c8d8',height=350)
                 st.plotly_chart(fig, use_container_width=True)
             for h, p in results.get("cracked_samples", []): st.code(f"{h} → {p}")
         with tab3:
